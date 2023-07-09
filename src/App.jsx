@@ -10,9 +10,9 @@ function App() {
       <main className='flex flex-col items-center max-w-lg text-center font-body'>
         <button className="btn btn-primary btn-wide text-[1.3rem] mb-12">Get Question</button>
         <div id="question" className=''>
-          <h2 className='text-[1.5rem] pb-12'>What are the pros and cons of using Promises instead of callbacks?</h2>
+          <h2 className='text-[1.5rem] pb-10'>What are the pros and cons of using Promises instead of callbacks?</h2>
         </div>
-        <div id="answer" className="max-w-xl card">
+        <div id="answer" className="max-w-xl card bg-[#1da1f2] text-white">
           <div className="card-body">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet a dignissimos officia nostrum vitae sequi maxime, delectus non iste, error consequatur consequuntur ad deleniti est aspernatur vero laborum tenetur fugiat!Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet a dignissimos officia nostrum vitae sequi maxime, delectus non iste, error consequatur consequuntur ad deleniti est aspernatur vero laborum tenetur fugiat!</p>
           </div>
