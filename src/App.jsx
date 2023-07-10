@@ -1,34 +1,24 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Banki Brunch</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="flex flex-col items-center px-4 mx-auto font-display">
+      <header className="pt-32 pb-7">
+        <h1 className=" text-white text-[3rem]">Banki Brunch</h1>
+      </header>
+      <main className='flex flex-col items-center max-w-lg text-center font-body'>
+        <button className="btn btn-primary btn-wide text-[1.3rem] mb-12">Get Question</button>
+        <div id="question" className=''>
+          <h2 className='text-[1.5rem] pb-10'>What are the pros and cons of using Promises instead of callbacks?</h2>
+        </div>
+        <div id="answer" className="max-w-xl card bg-[#1da1f2] text-white">
+          <div className="card-body">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet a dignissimos officia nostrum vitae sequi maxime, delectus non iste, error consequatur consequuntur ad deleniti est aspernatur vero laborum tenetur fugiat!Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet a dignissimos officia nostrum vitae sequi maxime, delectus non iste, error consequatur consequuntur ad deleniti est aspernatur vero laborum tenetur fugiat!</p>
+          </div>
+        </div>
+      </main>
+    </div>
   )
 }
 

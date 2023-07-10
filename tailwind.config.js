@@ -1,10 +1,14 @@
-import daisyui from 'daisyui'
-
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: ['./src/**/*.{js,ts,jsx,tsx}'],
+module.exports = {
+  content: [
+    './index.html',
+    './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {},
+    fontFamily: {
+      display: ['Lato', 'sans-serif'],
+      body: ['Roboto', 'sans-serif']
+    }
   },
-  plugins: [daisyui],
+  plugins: [require("@tailwindcss/typography"), require('daisyui')],
 }
