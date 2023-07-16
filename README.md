@@ -36,6 +36,24 @@ To Start the app in development mode
 npm run dev
 ```
 
+### Database
+
+Currently using dockerized [mongodb](https://hub.docker.com/_/mongo)
+
+**[Docker Desktop](https://www.docker.com/products/docker-desktop/) will need to be installed to run database**
+
+To bring database up
+
+```
+npm run db:up
+```
+
+To stop the database
+
+```
+npm run db:down
+```
+
 ## Tech Stack (For now)
 
 ### **Front-End**
@@ -91,7 +109,7 @@ _Credit for list_ : **puffalo**
 We welcome contributions. Simply fork the repository open a pull request with your changes and [@NickSramcik](https://www.github.com/NickSramcik) will review them.
 
 [tailwind css]: https://tailwindcss.com/docs/guides/vite
-[DaisyUI]: https://daisyui.com/
+[daisyui]: https://daisyui.com/
 [vite]: https://vitejs.dev/
 [mongoose]: https://mongoosejs.com/
 [mongodb]: https://www.mongodb.com/atlas/database
@@ -99,4 +117,4 @@ We welcome contributions. Simply fork the repository open a pull request with yo
 [express]: http://expressjs.com
 [react]: https://react.dev/
 [interview-question-api]: https://github.com/20jasper/interview-question-api
-[Discord Channel]: https://discord.com/channels/735923219315425401/1095865515290919062
+[discord channel]: https://discord.com/channels/735923219315425401/1095865515290919062
