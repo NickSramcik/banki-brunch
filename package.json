@@ -9,7 +9,7 @@
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "db:up": "docker compose up -d",
-    "db:down":"docker compose down"
+    "db:stop":"docker compose stop"
   },
   "dependencies": {
     "mongoose": "^7.3.4",
