@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  mongo:
+    ports:
+      - "27017:27017"
+    container_name: banki-brunch-mongo
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=banki
+      - MONGO_INITDB_ROOT_PASSWORD=brunch
+    image: mongo
