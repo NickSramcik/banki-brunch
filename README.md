@@ -51,7 +51,7 @@ npm run db:up
 To stop the database
 
 ```
-npm run db:down
+npm run db:stop
 ```
 
 ## Tech Stack (For now)
