@@ -36,6 +36,24 @@ To Start the app in development mode
 npm run dev
 ```
 
+### Database
+
+Currently using dockerized [mongodb](https://hub.docker.com/_/mongo)
+
+**[Docker Desktop](https://www.docker.com/products/docker-desktop/) will need to be installed to run the database**
+
+To bring database up
+
+```
+npm run db:up
+```
+
+To stop the database
+
+```
+npm run db:stop
+```
+
 ## Tech Stack (For now)
 
 ### **Front-End**
