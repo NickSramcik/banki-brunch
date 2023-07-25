@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "db:up": "docker compose up -d",
     "db:stop": "docker compose stop",
-    "start": "nodemon --experimental-modules app.mjs"
+    "start": "nodemon app.js"
   },
   "dependencies": {
     "ejs": "^3.1.9",

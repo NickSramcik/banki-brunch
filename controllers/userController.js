@@ -1,5 +1,3 @@
-//import User from "../models/userModel";
-
 class UserController {
   static add = async (req, res) => {
     const { title } = req.body;
@@ -21,17 +19,3 @@ class UserController {
 }
 
 export default UserController;
-
-// exports.getUser = async (req, res) => {
-//   try {
-//     const user = await User.findOne();
-//     if (!user) {
-//       return res.status(404).send("No user found");
-//     }
-//     res.render("userView", {
-//       user: user,
-//     });
-//   } catch (error) {
-//     res.status(500).send("Server Error");
-//   }
-// };

@@ -11,8 +11,6 @@ import userRoutes from "./routes/userRoutes.js";
 import errorHandler from "./middleware/errorHandler.js";
 import logger from "./middleware/logger.js";
 
-//import { questions } from ".data/questions.js";
-
 // Connect to MongoDB
 // mongoose
 //   .connect("mongodb://localhost/bankiBrunch", {
