@@ -4,12 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port 8080 --host",
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "db:up": "docker compose up -d",
-    "db:stop": "docker compose stop",
+    "db:up": "docker compose up -d mongo",
+    "db:stop": "docker compose stop mongo",
     "start": "nodemon app.js"
   },
   "dependencies": {

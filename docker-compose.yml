@@ -1,6 +1,18 @@
 version: "3.8"
 services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: banki-brunch:development
+    container_name: banki-brunch-app
+    command: /app/docker/start.sh
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/app
   mongo:
+    image: mongo
     ports:
       - "27017:27017"
     container_name: banki-brunch-mongo
@@ -8,4 +20,3 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=banki
       - MONGO_INITDB_ROOT_PASSWORD=brunch
-    image: mongo
