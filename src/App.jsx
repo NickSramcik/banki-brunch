@@ -23,7 +23,7 @@ function shuffle(array) {
 }
 
 function App() {
-  // Initialize a set random question indexes per review session
+  // Initialize a set of random question indexes per review session
   const [sessionIndexes, setSessionIndexes] = useState(shuffle(new Array(questions.length).fill(0).map((_, i) => i)));
   
   // The current index into sessionIndexes
@@ -31,6 +31,8 @@ function App() {
 
 
   const handleNextQuestion = () => {
+    // Increment actionQuestionIndex and rollover if it exceeds
+    // the length of the questions Array
     let next_index = (activeQuestionIndex + 1) % sessionIndexes.length;
     console.log(activeQuestionIndex, next_index)
     setActiveQuestionIndex(next_index)
@@ -39,8 +41,8 @@ function App() {
   const handlePrevQuestion = () => {
     // To avoid negative indexes, the previous question index is calculated
     // by adding the total number of questions (minus 1) to the current index
-    // and rolling over to the beginning of the range using a modulus whenever 
-    // the new index exceeds the length of the questions array
+    // and rolls over to the beginning of the range using a modulus whenever 
+    // the new index exceeds the length of the questions Array
     let prev_index = (activeQuestionIndex + sessionIndexes.length - 1) % sessionIndexes.length;
     console.log(activeQuestionIndex, prev_index)
     setActiveQuestionIndex(prev_index)
@@ -56,7 +58,10 @@ function App() {
           <button onClick={handlePrevQuestion} className="btn btn-primary btn-wide text-[1.3rem]">Previous</button>
           <button onClick={handleNextQuestion} className="btn btn-primary btn-wide text-[1.3rem]">Next</button>
         </div>
-        <div id="question" className=''>
+        <div id="question">
+          {/* Use the activeQuestionIndex to access the corresponding index into questions for the current session
+              Then use the parse module to handle any HTML formatting in the question and return the formatted text
+           */}
           <h2 className='text-[1.5rem] pb-10'>{parse(questions[sessionIndexes[activeQuestionIndex]].question).text}</h2>
         </div>
         <div id="answer" className="max-w-xl card bg-[#1da1f2] text-white">
