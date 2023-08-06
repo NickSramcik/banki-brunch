@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 
 // These mongoose schemas use discriminators for inheritance and use subdocuments for nesting
 // Changes to a subdocument require changing the parent document, see the subdocs reference.
-// One advantage of subdocuments is that they have unique ids
 // A schema with a discriminator can be used and referred to like any other schema.
 // This database architecture should accomodate several hundred answers and comments per question.
 // However, nesting Answers might make them more difficult to query.
@@ -23,14 +22,18 @@ const Post = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  upvotes: {
-    type: Number,
-    default: 0,
-  },
-  downvotes: {
-    type: Number,
-    default: 0,
-  },
+  upvotes: [
+    {
+      type: mongoose.Schema.Types.ObjectId, 
+      ref: "User",
+    }
+  ],
+  downvotes: [
+    {
+      type: mongoose.Schema.Types.ObjectId, 
+      ref: "User",
+    }
+  ],
   createdAt: {
     type: Date,
     default: Date.now,
