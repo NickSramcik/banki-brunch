@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Theme colors */
+:root {
+    /* Color Palette (RGB) */
+    --orange: #FEAD1A;
+    --sunset: #FFD587;
+    --champagne: #FBE7CC;
+    --chamoisee: #A4784C;
+    --bistre: #311706;
+    --smoky-black: #0C0601;
+    --indian-red: #DD6A6D;
+    --fire-brick: #BA2829;
+    --french-gray: #CBD1DB;
+    --timberwolf: #CDC3BA;
+    --silver: #A5A29B;
+    --dark-slate-grey: #223A3A;
+}
