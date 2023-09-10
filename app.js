@@ -1,11 +1,76 @@
 import express from "express";
 const app = express();
+import cookieParser from 'cookie-parser'
+import mongoose from 'mongoose';
+import passport from 'passport'
+import connectDB from './config/database.js'
+import session from 'express-session'
+import MongoStore from 'connect-mongo'
+import 'dotenv/config'
+
+// const mockUser = require('./config/mockUser.json')
+// const User = require('./models/User')
+
+connectDB()
+
+// ***************************** 
+// Sessions (MongoDB)
+
+
+app.use(cookieParser())
+
+if (process.env.NODE_ENV === 'local') {
+  app.use(
+    session({
+      secret: process.env.SESSION_SECRET || 'keyboard cat',
+      resave: false,
+      saveUninitialized: false,
+      store: MongoStore.create({ mongoUrl: process.env.DB_STRING })
+    })
+  )
+} else {
+  console.log('Running production environment...')
+  app.use(
+    session({
+      secret: process.env.SESSION_SECRET || 'keyboard cat',
+      resave: false,
+      saveUninitialized: false,
+      store: new MongoStore({ mongooseConnection: mongoose.connection }),
+      cookie: {
+        secure: true, // Set to true if you're using HTTPS
+        httpOnly: true,
+        maxAge: 1000 * 60 * 60 * 24, // 1 day
+        sameSite: "none",
+      }
+    })
+  )
+}
+app.use(passport.initialize())
+app.use(passport.session())
+import passportConfig from "./config/passport.js"
+passportConfig(passport)
+
+// Set up mock user in local environment
+// if (process.env.NODE_ENV === "local") {
+//   console.log("Running local environment (using Mock User)")
+//   app.use(async (req, res, next) => {
+//     if (process.env.MOCK_USER !== "true") return next()
+//     req.user = mockUser
+//     await User.findOneAndUpdate(
+//       { _id: mockUser._id },
+//       { $setOnInsert: mockUser },
+//       { upsert: true, new: true }
+//     ).exec()
+//     next()
+//   })
+// }
 
 //import mongoose from "mongoose"; // not set up yet
 
 // Import routers
 import homeRoutes from "./routes/homeRoute.js";
 import userRoutes from "./routes/userRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
 
 // Import global middlewares
 import errorHandler from "./middleware/errorHandler.js";
@@ -28,6 +93,7 @@ app.use(logger); // Log every request
 // Using the routers
 app.use("/", homeRoutes);
 app.use("/user", userRoutes);
+app.use("/auth", authRoutes);
 
 // Global error handler (should be the last middleware)
 app.use(errorHandler);
@@ -36,3 +102,5 @@ const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server started on http://localhost:${PORT}`);
 });
+
+export default app

@@ -50,6 +50,9 @@ function App() {
 
   return (
     <div className="flex flex-col items-center px-4 mx-auto font-display">
+      <form action='http://localhost:3000/auth/discord'>
+            <button type="submit" className="btn btn-primary">Login with Discord</button>
+        </form>
       <header className="pt-32 pb-7">
         <h1 className=" text-white text-[3rem]">Banki Brunch</h1>
       </header>
