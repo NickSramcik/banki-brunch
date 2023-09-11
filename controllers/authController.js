@@ -4,8 +4,8 @@ class AuthController {
   static authDiscord = passport.authenticate("discord")
 
   static authDiscordCallback = passport.authenticate("discord", {
-    failureRedirect: process.env.CLIENT_URL,
-    successRedirect: process.env.CLIENT_URL
+    failureRedirect: `${process.env.CLIENT_URL}/`,
+    successRedirect: `${process.env.CLIENT_URL}/`
   })
 
   static logout = (req, res, next) => {

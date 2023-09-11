@@ -1,23 +1,26 @@
 import express from "express";
 const app = express();
-import cookieParser from 'cookie-parser'
-import mongoose from 'mongoose';
-import passport from 'passport'
-import connectDB from './config/database.js'
-import session from 'express-session'
-import MongoStore from 'connect-mongo'
-import 'dotenv/config'
+import cookieParser from 'cookie-parser';
+import passport from 'passport';
+import connectDB from './config/database.js';
+import session from 'express-session';
+import MongoStore from 'connect-mongo';
+import 'dotenv/config';
+import passportConfig from "./config/passport.js";
+passportConfig(passport);
 
 // const mockUser = require('./config/mockUser.json')
 // const User = require('./models/User')
 
-connectDB()
+connectDB();
 
 // ***************************** 
 // Sessions (MongoDB)
 
 
-app.use(cookieParser())
+app.use(cookieParser());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 if (process.env.NODE_ENV === 'local') {
   app.use(
@@ -25,17 +28,16 @@ if (process.env.NODE_ENV === 'local') {
       secret: process.env.SESSION_SECRET || 'keyboard cat',
       resave: false,
       saveUninitialized: false,
-      store: MongoStore.create({ mongoUrl: process.env.DB_STRING })
+      store: MongoStore.create({ mongoUrl: process.env.DB_STRING, dbName: 'banki-brunch' })
     })
   )
 } else {
-  console.log('Running production environment...')
   app.use(
     session({
       secret: process.env.SESSION_SECRET || 'keyboard cat',
       resave: false,
       saveUninitialized: false,
-      store: new MongoStore({ mongooseConnection: mongoose.connection }),
+      store: MongoStore.create({ mongoUrl: process.env.DB_STRING, dbName: 'banki-brunch' }),
       cookie: {
         secure: true, // Set to true if you're using HTTPS
         httpOnly: true,
@@ -45,10 +47,8 @@ if (process.env.NODE_ENV === 'local') {
     })
   )
 }
-app.use(passport.initialize())
-app.use(passport.session())
-import passportConfig from "./config/passport.js"
-passportConfig(passport)
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Set up mock user in local environment
 // if (process.env.NODE_ENV === "local") {
@@ -103,4 +103,4 @@ app.listen(PORT, () => {
   console.log(`Server started on http://localhost:${PORT}`);
 });
 
-export default app
+export default app;

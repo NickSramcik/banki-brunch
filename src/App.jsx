@@ -25,7 +25,7 @@ function shuffle(array) {
 function App() {
   // Initialize a set of random question indexes per review session
   const [sessionIndexes, setSessionIndexes] = useState(shuffle(new Array(questions.length).fill(0).map((_, i) => i)));
-  
+
   // The current index into sessionIndexes
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
 
@@ -50,9 +50,11 @@ function App() {
 
   return (
     <div className="flex flex-col items-center px-4 mx-auto font-display">
-      <form action='http://localhost:3000/auth/discord'>
-            <button type="submit" className="btn btn-primary">Login with Discord</button>
-        </form>
+      <form action='/auth/discord' className="btn-login">
+        <button type="submit" className="btn btn-primary">
+          Login
+        </button>
+      </form>
       <header className="pt-32 pb-7">
         <h1 className=" text-white text-[3rem]">Banki Brunch</h1>
       </header>

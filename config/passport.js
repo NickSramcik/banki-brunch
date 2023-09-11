@@ -24,17 +24,18 @@ export default function (passport) {
     }
   })
 
-  if (process.env.NODE_ENV === "local") mockDiscordResponses()
+  //if (process.env.NODE_ENV === "local") mockDiscordResponses()
 
   passport.use(
     new Strategy({
       clientID: process.env.DISCORD_CLIENT_ID,
       clientSecret: process.env.DISCORD_CLIENT_SECRET,
-      callbackURL: `${process.env.CLIENT_URL}/auth/discord/callback`,
+      callbackURL: `/auth/discord/callback`,
       scope: ['identify', 'email', 'guilds'],
       passReqToCallback: true,
     },
       async function (req, accessToken, refreshToken, profile, cb) {
+        console.log(profile)
         const is100devs = profile.guilds.some(server => server.id === '735923219315425401')
         let user = await User.findOne({ name: profile.username }).exec()
         try {

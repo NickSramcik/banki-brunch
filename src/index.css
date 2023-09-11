@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.btn-login {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+}
