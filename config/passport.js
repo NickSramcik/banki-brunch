@@ -22,7 +22,7 @@ export default function (passport) {
     }
   })
 
-  //if (process.env.NODE_ENV === "development") mockDiscordResponses()
+  if (process.env.NODE_ENV === "development") mockDiscordResponses()
 
   passport.use(
     new Strategy({

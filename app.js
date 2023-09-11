@@ -9,8 +9,8 @@ import 'dotenv/config';
 import passportConfig from "./config/passport.js";
 passportConfig(passport);
 
-// const mockUser = require('./config/mockUser.json')
-// const User = require('./models/User')
+import mockUser from './config/mockUser.json' assert { type: 'json' }
+import User from './models/userModel.js'
 
 
 // ***************************** 
@@ -50,19 +50,19 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Set up mock user in development environment
-// if (process.env.NODE_ENV === "development") {
-//   console.log("Running development environment (using Mock User)")
-//   app.use(async (req, res, next) => {
-//     if (process.env.MOCK_USER !== "true") return next()
-//     req.user = mockUser
-//     await User.findOneAndUpdate(
-//       { _id: mockUser._id },
-//       { $setOnInsert: mockUser },
-//       { upsert: true, new: true }
-//     ).exec()
-//     next()
-//   })
-// }
+if (process.env.NODE_ENV === "development") {
+  console.log("Running development environment (using Mock User)")
+  app.use(async (req, res, next) => {
+    if (process.env.MOCK_USER !== "true") return next()
+    req.user = mockUser
+    await User.findOneAndUpdate(
+      { _id: mockUser._id },
+      { $setOnInsert: mockUser },
+      { upsert: true, new: true }
+    ).exec()
+    next()
+  })
+}
 
 //import mongoose from "mongoose"; // not set up yet
 

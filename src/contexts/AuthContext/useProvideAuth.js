@@ -16,9 +16,6 @@ const useProvideAuth = () => {
                 // No user
                 setUser(null)
             }
-            if (response instanceof Object) {
-                // To-do: put redirect logic here
-            }
         }
         fetchCurrentUser()
     }, [])
