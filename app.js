@@ -12,7 +12,6 @@ passportConfig(passport);
 // const mockUser = require('./config/mockUser.json')
 // const User = require('./models/User')
 
-connectDB();
 
 // ***************************** 
 // Sessions (MongoDB)
@@ -22,7 +21,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-if (process.env.NODE_ENV === 'local') {
+if (process.env.NODE_ENV === 'development') {
   app.use(
     session({
       secret: process.env.SESSION_SECRET || 'keyboard cat',
@@ -50,9 +49,9 @@ if (process.env.NODE_ENV === 'local') {
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Set up mock user in local environment
-// if (process.env.NODE_ENV === "local") {
-//   console.log("Running local environment (using Mock User)")
+// Set up mock user in development environment
+// if (process.env.NODE_ENV === "development") {
+//   console.log("Running development environment (using Mock User)")
 //   app.use(async (req, res, next) => {
 //     if (process.env.MOCK_USER !== "true") return next()
 //     req.user = mockUser
@@ -99,8 +98,7 @@ app.use("/auth", authRoutes);
 app.use(errorHandler);
 
 const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`Server started on http://localhost:${PORT}`);
-});
+
+connectDB().then(() => app.listen(PORT, () => console.log(`Server started on http://localhost:${PORT}`)))
 
 export default app;

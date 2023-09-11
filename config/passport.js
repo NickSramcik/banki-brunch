@@ -4,16 +4,14 @@ import mockDiscordResponses from './passportMockUser.js'
 
 export default function (passport) {
   passport.serializeUser((user, done) => {
-    console.log('Serializing user:', user)
     done(null, user.id)
   })
 
   passport.deserializeUser(async (id, cb) => {
-    console.log('Deserializing user...')
     try {
       const user = await User.findOne({ _id: id }).exec()
       const userInformation = {
-        username: user.username,
+        username: user.name,
         id: user._id,
         is100devs: user.is100devs
       }
@@ -24,7 +22,7 @@ export default function (passport) {
     }
   })
 
-  //if (process.env.NODE_ENV === "local") mockDiscordResponses()
+  //if (process.env.NODE_ENV === "development") mockDiscordResponses()
 
   passport.use(
     new Strategy({
@@ -35,7 +33,6 @@ export default function (passport) {
       passReqToCallback: true,
     },
       async function (req, accessToken, refreshToken, profile, cb) {
-        console.log(profile)
         const is100devs = profile.guilds.some(server => server.id === '735923219315425401')
         let user = await User.findOne({ name: profile.username }).exec()
         try {

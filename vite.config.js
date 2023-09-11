@@ -8,7 +8,7 @@ export default defineConfig({
     host: true,
     port: 3000,
     proxy: {
-      '/auth/discord': {
+      '/auth': {
         target: 'http://localhost:3000',
         changeOrigin: true,
         secure: false,

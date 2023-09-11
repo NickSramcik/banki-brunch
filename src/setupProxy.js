@@ -2,7 +2,7 @@ const { createProxyMiddleware } = require("http-proxy-middleware");
 
 module.exports = function (app) {
   app.use(
-    "/auth/discord",
+    "^/auth/**$",
     createProxyMiddleware({
       target: process.env.API_URL,
       changeOrigin: true,
