@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { questions } from '../data/questions.js'
 import { parse } from 'node-html-parser'
 import './App.css'
+import { useAuthContext } from "./contexts/AuthContext"
 
 /*
 This shuffle function uses the Fisher-Yates shuffle algorithm
@@ -23,9 +24,11 @@ function shuffle(array) {
 }
 
 function App() {
+  const auth = useAuthContext();
+  const isAuthenticated = auth.isAuthenticated();
   // Initialize a set of random question indexes per review session
   const [sessionIndexes, setSessionIndexes] = useState(shuffle(new Array(questions.length).fill(0).map((_, i) => i)));
-  
+
   // The current index into sessionIndexes
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
 
@@ -50,6 +53,18 @@ function App() {
 
   return (
     <div className="flex flex-col items-center px-4 mx-auto font-display">
+      {isAuthenticated ?
+        <form onSubmit={() => auth.logout()} className="btn-login">
+          <button type="submit" className="btn btn-primary">
+            Logout
+          </button>
+        </form>
+        : <form action='/auth/discord' className="btn-login">
+          <button type="submit" className="btn btn-primary">
+            Login
+          </button>
+        </form>
+      }
       <header className="pt-32 pb-7">
         <h1 className=" text-white text-[3rem]">Banki Brunch</h1>
       </header>
