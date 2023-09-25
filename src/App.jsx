@@ -4,6 +4,8 @@ import { parse } from 'node-html-parser'
 import * as React from 'react';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
 import './App.css'
+import Header from './Header.jsx'
+import Footer from './Footer.jsx'
 
 /*
 This shuffle function uses the Fisher-Yates shuffle algorithm
@@ -59,7 +61,10 @@ function App() {
 
 
   return (
-    <div className={`flex flex-col items-center px-4 mx-auto min-h-screen font-display ${isDarkMode ? "bg-[#a4784c]" : "bg-[#fbe7cc]"}`}>
+    <>
+    
+    <div className={`flex flex-col items-center px-4 mx-auto min-h-screen font-display bg-base-100`}>
+        <Header/>
       <DarkModeSwitch className='self-end mt-4 text-xl'
         style={{ marginBottom: '2rem'}}
         checked={!isDarkMode}
@@ -68,29 +73,30 @@ function App() {
         moonColor="#33302d"
         size={40}
       />
-      <header className=" pb-7">
-        <h1 className={`text-[3rem] ${isDarkMode ? "text-[#f1ddc2]" : "text-[#33302d]"}`}>Banki Brunch</h1>
-      </header>
       <main className='flex flex-col gap-4 items-center max-w-lg text-center font-body'>
-
         <div className="flex flex-row gap-8">
-          <button onClick={handlePrevQuestion} className={`btn btn-wide border-[#a4784c] text-[1.3rem] mb-6 ${isDarkMode ? "bg-[#ba2829] text-[#f1ddc2]" : "bg-[#a4784c] text-[#fbe7cc]"} hover:bg-[#dc442e] hover:border-[#dc442e] hover:text-[#fbe7cc]`}>Previous</button>
-          <button onClick={handleNextQuestion} className={`btn btn-wide border-[#a4784c] text-[1.3rem] mb-6 ${isDarkMode ? "bg-[#ba2829] text-[#f1ddc2]" : "bg-[#a4784c] text-[#fbe7cc]"} hover:bg-[#dc442e] hover:border-[#dc442e] hover:text-[#fbe7cc]`}>Next</button>
-        </div>
+        <svg onClick={handlePrevQuestion} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-20 h-20">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+        </svg>
         <div id="question">
           {/* Use the activeQuestionIndex to access the corresponding index into questions for the current session
               Then use the parse module to handle any HTML formatting in the question and return the formatted text
            */}
-          <h2 className={`text-[1.5rem] pb-6 ${isDarkMode ? "text-[#fbe7cc]" : "text-[#33302d]"}`}>{parse(questions[sessionIndexes[activeQuestionIndex]].question).text}</h2>
-
+          <h2 className={`text-[1.5rem] pb-6 text-secondary`}>{parse(questions[sessionIndexes[activeQuestionIndex]].question).text}</h2>
         </div>
-        <div id="answer" className={`max-w-xl card ${isDarkMode ? "bg-[#264040] text-[#fbe7cc]" : "bg-[#ba2829]"} text-[#fbe7cc]`}>
+        <svg onClick={handleNextQuestion} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-20 h-20">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+        </svg>
+        </div>
+        <div id="answer" className={`max-w-xl card bg-primary text-secondary`}>
           <div className="card-body">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet a dignissimos officia nostrum vitae sequi maxime, delectus non iste, error consequatur consequuntur ad deleniti est aspernatur vero laborum tenetur fugiat!Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet a dignissimos officia nostrum vitae sequi maxime, delectus non iste, error consequatur consequuntur ad deleniti est aspernatur vero laborum tenetur fugiat!</p>
           </div>
         </div>
       </main>
+      <Footer />
     </div>
+    </>
   )
 }
 
