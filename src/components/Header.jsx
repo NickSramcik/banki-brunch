@@ -1,4 +1,4 @@
-import './App.css'
+import '../App.css'
 
 
 function Header() { 
@@ -9,6 +9,7 @@ return(
       <header className="">
         <h1 className=" text-white font-bubble text-[5rem] ">BANKI BRUNCH</h1>
       </header>
+      
       <img id="waffle" className="w-80" src="src/assets/waffle.png"/>
     </div>
 )
