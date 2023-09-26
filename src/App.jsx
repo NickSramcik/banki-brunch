@@ -33,7 +33,7 @@ function App() {
 
   return (
 
-    <div className="flex flex-col items-center justify-between px-4 mx-auto font-display bg-base-100 h-screen">
+    <div className="flex flex-col items-center justify-between px-4 mx-auto font-display bg-base-100 h-screen overflow-hidden">
       <Header/>
 
       {isAuthenticated ?
