@@ -9,7 +9,6 @@ return(
             <p className="text-2xl text-left p-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet a dignissimos officia nostrum vitae sequi maxime, delectus non iste, error consequatur consequuntur ad deleniti est aspernatur vero laborum tenetur fugiat!Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet a dignissimos officia nostrum vitae sequi maxime, delectus non iste, error consequatur consequuntur ad deleniti est aspernatur vero laborum tenetur fugiat!</p>
         </div>
         <div>
-            <button>Hide</button>
             {/* Added functionality Card actions can go here for alternate answers, etc */}
         </div>
     </div>

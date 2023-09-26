@@ -49,22 +49,25 @@ export default function Question() {
     console.log(activeQuestionIndex, prev_index)
     setActiveQuestionIndex(prev_index)
   }
+  
   function ShowAnswerBtn() {
     const [isOpen, setIsOpen] = useState(false);
     const [visible, setVisible] = useState(true);
-  
+    const [buttonText, setButtonText] = useState("GET ANSWER"); //same as creating your state variable where "Next" is the default value for buttonText and setButtonText is the setter function for your state variable instead of setState
+    
+    
     function toggle() {
       setIsOpen((isOpen) => !isOpen);
       setVisible((prev) => !prev);
+      setButtonText((state) => (state === "HIDE ANSWER" ? "GET ANSWER" : "HIDE ANSWER"));
     }
+
     
     return (
       <div>
         {isOpen && <AnswerBox />}
-        {visible && (
-        <button onClick={toggle} className="bg-primary border-[2px] border-full border-accent rounded-full p-2 text-secondary font-bubble tracking-wider text-2xl">GET ANSWER</button>
-            )}
-        </div>
+        <button onClick={toggle} className="bg-primary border-[2px] border-full border-accent rounded-full p-2 text-secondary font-bubble tracking-wider text-2xl mt-4">{buttonText}</button>
+      </div>
     );
   }
   return (
