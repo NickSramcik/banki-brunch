@@ -1,6 +1,6 @@
 import "../App.css"
 import { useState } from 'react'
-import { questions } from '../../data/questions.js'
+import { questions } from '../data/questions.js'
 import { parse } from 'node-html-parser'
 
 /*
