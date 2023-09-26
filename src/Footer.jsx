@@ -4,8 +4,8 @@ import './App.css'
 function Footer() { 
   
 return(
-    <div className="bg-neutral flex justify-between h-10 flex items-center w-screen">  
-      <footer classname="bg-neutral">
+    <div className="bg-neutral justify-between h-10 flex items-center w-screen">  
+      <footer className="bg-neutral">
 
         </footer>
     </div>
