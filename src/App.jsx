@@ -3,6 +3,7 @@ import { questions } from '../data/questions.js'
 import { parse } from 'node-html-parser'
 import './App.css'
 import Header from './Header.jsx'
+import AnswerBox from './AnswerBox.jsx'
 import Footer from './Footer.jsx'
 import { useAuthContext } from "./contexts/AuthContext"
 
@@ -24,6 +25,7 @@ function shuffle(array) {
 
   return new_array;
 }
+
 
 function App() {
 
@@ -54,11 +56,29 @@ function App() {
     console.log(activeQuestionIndex, prev_index)
     setActiveQuestionIndex(prev_index)
   }
-
+  
+function ShowAnswerBtn() {
+    const [isOpen, setIsOpen] = useState(false);
+    const [visible, setVisible] = useState(true);
+  
+    function toggle() {
+      setIsOpen((isOpen) => !isOpen);
+      setVisible((prev) => !prev);
+    }
+    
+    return (
+      <div>
+        {isOpen && <AnswerBox />}
+        {visible && (
+        <button onClick={toggle} className="bg-primary border-[2px] border-full border-accent rounded-full p-2 text-secondary font-bubble tracking-wider text-2xl">GET ANSWER</button>
+            )}
+        </div>
+    );
+  }
 
   return (
 
-    <div className="flex flex-col items-center px-4 mx-auto font-display bg-base-100">
+    <div className="flex flex-col items-center justify-between px-4 mx-auto font-display bg-base-100 h-screen">
       <Header/>
       {isAuthenticated ?
         <form onSubmit={() => auth.logout()} className="btn-login">
@@ -72,30 +92,23 @@ function App() {
           </button>
         </form>
       }
-      <header className="pt-32 pb-7">
-        <h1 className=" text-white text-[3rem]">Banki Brunch</h1>
-      </header>
 
-      <main className='flex flex-col gap-4 items-center max-w-lg text-center font-body'>
-        <div className="flex flex-row gap-8">
-        <svg onClick={handlePrevQuestion} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-20 h-20">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-        </svg>
-        <div id="question">
-          {/* Use the activeQuestionIndex to access the corresponding index into questions for the current session
-              Then use the parse module to handle any HTML formatting in the question and return the formatted text
-          */}
-          <h2 className={`text-[1.5rem] pb-6 text-secondary`}>{parse(questions[sessionIndexes[activeQuestionIndex]].question).text}</h2>
+      <main className='flex flex-col gap-4 items-center text-center font-body'>
+        <div className="flex flex-row gap-8 items-center">
+            <svg onClick={handlePrevQuestion} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-20 h-20 action-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
+            <div id="question" className='w-96'>
+            {/* Use the activeQuestionIndex to access the corresponding index into questions for the current session
+                Then use the parse module to handle any HTML formatting in the question and return the formatted text
+            */}
+            <h2 className={`text-[1.5rem] pb-6 text-secondary`}>{parse(questions[sessionIndexes[activeQuestionIndex]].question).text}</h2>
+            </div>
+            <svg onClick={handleNextQuestion} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-20 h-20 action-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
         </div>
-        <svg onClick={handleNextQuestion} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-20 h-20">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-        </svg>
-        </div>
-        <div id="answer" className={`max-w-xl card bg-primary text-secondary`}>
-          <div className="card-body">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet a dignissimos officia nostrum vitae sequi maxime, delectus non iste, error consequatur consequuntur ad deleniti est aspernatur vero laborum tenetur fugiat!Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet a dignissimos officia nostrum vitae sequi maxime, delectus non iste, error consequatur consequuntur ad deleniti est aspernatur vero laborum tenetur fugiat!</p>
-          </div>
-        </div>
+        <ShowAnswerBtn />
       </main>
       <Footer />
     </div>
