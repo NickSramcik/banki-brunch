@@ -1,6 +1,6 @@
 import "../App.css"
 import { useState } from 'react'
-import { questions } from '../data/questions.js'
+import { questions } from '../../data/questions.js'
 import { parse } from 'node-html-parser'
 
 /*
@@ -22,7 +22,7 @@ function shuffle(array) {
   return new_array;
 }
 
-export default function AnswerBox() {
+export default function Question() {
 
   // Initialize a set of random question indexes per review session
   const [sessionIndexes, setSessionIndexes] = useState(shuffle(new Array(questions.length).fill(0).map((_, i) => i)));
@@ -66,7 +66,7 @@ export default function AnswerBox() {
           d="M15.75 19.5L8.25 12l7.5-7.5"
         />
       </svg>
-      <div id="question" className="flex flex-col justify-center">
+      <div id="question" className="flex flex-col justify-center w-96">
         {/* Use the activeQuestionIndex to access the corresponding index into questions for the current session
             Then use the parse module to handle any HTML formatting in the question and return the formatted text
         */}
