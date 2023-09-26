@@ -2,6 +2,7 @@ import "../App.css"
 import { useState } from 'react'
 import { questions } from '../../data/questions.js'
 import { parse } from 'node-html-parser'
+import AnswerBox from "./AnswerBox"
 
 /*
 This shuffle function uses the Fisher-Yates shuffle algorithm
@@ -48,8 +49,26 @@ export default function Question() {
     console.log(activeQuestionIndex, prev_index)
     setActiveQuestionIndex(prev_index)
   }
-
+  function ShowAnswerBtn() {
+    const [isOpen, setIsOpen] = useState(false);
+    const [visible, setVisible] = useState(true);
+  
+    function toggle() {
+      setIsOpen((isOpen) => !isOpen);
+      setVisible((prev) => !prev);
+    }
+    
+    return (
+      <div>
+        {isOpen && <AnswerBox />}
+        {visible && (
+        <button onClick={toggle} className="bg-primary border-[2px] border-full border-accent rounded-full p-2 text-secondary font-bubble tracking-wider text-2xl">GET ANSWER</button>
+            )}
+        </div>
+    );
+  }
   return (
+    <>
     <div className="flex flex-row gap-8 justify-center justify-items-center mb-8">
       <svg
         onClick={handlePrevQuestion}
@@ -90,5 +109,7 @@ export default function Question() {
         />
       </svg>
     </div>
+    <ShowAnswerBtn/>
+    </>
   )
 }
