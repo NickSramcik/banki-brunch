@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { questions } from '../data/questions.js'
 import { parse } from 'node-html-parser'
 import './App.css'
+import Header from './Header.jsx'
+import Footer from './Footer.jsx'
 import { useAuthContext } from "./contexts/AuthContext"
 
 /*
@@ -24,8 +26,10 @@ function shuffle(array) {
 }
 
 function App() {
+
   const auth = useAuthContext();
   const isAuthenticated = auth.isAuthenticated();
+
   // Initialize a set of random question indexes per review session
   const [sessionIndexes, setSessionIndexes] = useState(shuffle(new Array(questions.length).fill(0).map((_, i) => i)));
 
@@ -51,8 +55,11 @@ function App() {
     setActiveQuestionIndex(prev_index)
   }
 
+
   return (
-    <div className="flex flex-col items-center px-4 mx-auto font-display">
+
+    <div className="flex flex-col items-center px-4 mx-auto font-display bg-base-100">
+      <Header/>
       {isAuthenticated ?
         <form onSubmit={() => auth.logout()} className="btn-login">
           <button type="submit" className="btn btn-primary">
@@ -68,23 +75,29 @@ function App() {
       <header className="pt-32 pb-7">
         <h1 className=" text-white text-[3rem]">Banki Brunch</h1>
       </header>
+
       <main className='flex flex-col gap-4 items-center max-w-lg text-center font-body'>
         <div className="flex flex-row gap-8">
-          <button onClick={handlePrevQuestion} className="btn btn-primary btn-wide text-[1.3rem]">Previous</button>
-          <button onClick={handleNextQuestion} className="btn btn-primary btn-wide text-[1.3rem]">Next</button>
-        </div>
+        <svg onClick={handlePrevQuestion} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-20 h-20">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+        </svg>
         <div id="question">
           {/* Use the activeQuestionIndex to access the corresponding index into questions for the current session
               Then use the parse module to handle any HTML formatting in the question and return the formatted text
-           */}
-          <h2 className='text-[1.5rem] pb-10'>{parse(questions[sessionIndexes[activeQuestionIndex]].question).text}</h2>
+          */}
+          <h2 className={`text-[1.5rem] pb-6 text-secondary`}>{parse(questions[sessionIndexes[activeQuestionIndex]].question).text}</h2>
         </div>
-        <div id="answer" className="max-w-xl card bg-[#1da1f2] text-white">
+        <svg onClick={handleNextQuestion} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-20 h-20">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+        </svg>
+        </div>
+        <div id="answer" className={`max-w-xl card bg-primary text-secondary`}>
           <div className="card-body">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet a dignissimos officia nostrum vitae sequi maxime, delectus non iste, error consequatur consequuntur ad deleniti est aspernatur vero laborum tenetur fugiat!Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet a dignissimos officia nostrum vitae sequi maxime, delectus non iste, error consequatur consequuntur ad deleniti est aspernatur vero laborum tenetur fugiat!</p>
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   )
 }

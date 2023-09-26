@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.font-bubble{
+    font-family: 'Lilita One', cursive;
+    text-shadow: 0.1em 0.05em #000
+}
+
+#waffle{
+   transform: translate(50px, -15px)
+}
+
+
