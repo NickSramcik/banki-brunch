@@ -11,47 +11,8 @@ function App() {
   const auth = useAuthContext();
   const isAuthenticated = auth.isAuthenticated();
 
-  function ShowAnswerBtn() {
-    const [isOpen, setIsOpen] = useState(false);
-    const [visible, setVisible] = useState(true);
-
-    function toggle() {
-      setIsOpen((isOpen) => !isOpen);
-      setVisible((prev) => !prev);
-    }
-
-    useEffect(() => {
-      //get access to the html tag so we can change
-      //the data-theme attribute.
-      const html = document.querySelector("html");
-
-      const isThemeInLocalStorage =
-        localStorage.getItem("banki-theme");
-
-      if (isThemeInLocalStorage === "light") {
-        html.setAttribute("data-theme", "light");
-      } else {
-        html.setAttribute("data-theme", "dark");
-      }
-    }, []);
-
-    return (
-      <div>
-        {isOpen && <AnswerBox />}
-        {visible && (
-          <button
-            onClick={toggle}
-            className="bg-primary border-[2px] border-full border-accent rounded-full p-2 text-secondary font-bubble tracking-wider text-2xl"
-          >
-            GET ANSWER
-          </button>
-        )}
-      </div>
-    );
-  }
-
   return (
-    <div className="flex flex-col items-center justify-between px-4 mx-auto font-display bg-base-100 h-screen">
+    <div className="flex flex-col items-center justify-between px-4 mx-auto font-display bg-base-100 h-screen overflow-hidden">
       <Header />
 
       {isAuthenticated ? (
@@ -70,7 +31,6 @@ function App() {
 
       <main className="flex flex-col gap-4 items-center text-center font-body">
         <Question />
-        <ShowAnswerBtn />
       </main>
 
       <Footer theme={theme} setTheme={setTheme} />
