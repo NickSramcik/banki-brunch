@@ -66,13 +66,13 @@ export default function Question() {
     return (
       <div>
         {isOpen && <AnswerBox />}
-        <button onClick={toggle} className="bg-primary border-[2px] border-full border-accent rounded-full p-2 text-secondary font-bubble tracking-wider text-2xl mt-4">{buttonText}</button>
+        <button onClick={toggle} className="bg-primary border-[2px] border-full border-accent rounded-full p-4 text-secondary font-bubble tracking-wider text-2xl mt-4">{buttonText}</button>
       </div>
     );
   }
   return (
     <>
-    <div className="flex flex-row gap-8 justify-center justify-items-center mb-8">
+    <div className="flex flex-row justify-center gap-8 mb-8 justify-items-center">
       <svg
         onClick={handlePrevQuestion}
         xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +80,7 @@ export default function Question() {
         viewBox="0 0 24 24"
         stroke-width="2.5"
         stroke="currentColor"
-        className="w-80 h-20 cursor-pointer" // Set the fixed width and height here
+        className="h-20 cursor-pointer w-80" // Set the fixed width and height here
       >
         <path
           stroke-linecap="round"
@@ -103,7 +103,7 @@ export default function Question() {
         viewBox="0 0 24 24"
         stroke-width="2.5"
         stroke="currentColor"
-        className="w-80 h-20 cursor-pointer" // Set the fixed width and height here
+        className="h-20 cursor-pointer w-80" // Set the fixed width and height here
       >
         <path
           stroke-linecap="round"

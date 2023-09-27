@@ -4,7 +4,7 @@ import '../App.css'
 function Header() { 
   
 return(
-    <div className="pl-4 bg-neutral flex justify-between h-40 flex items-center w-screen">
+    <div className="flex items-center justify-between w-screen h-40 pl-4 bg-neutral">
 
       <header className="">
         <h1 id="logo-text" className=" text-white text-[5rem] ">BANKI BRUNCH</h1>
