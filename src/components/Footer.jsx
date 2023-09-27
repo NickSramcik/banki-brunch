@@ -4,11 +4,7 @@ function Footer({ theme, setTheme }) {
   return (
     <div className="bg-neutral justify-between h-10 flex items-center w-screen">
       <span>
-        <DarkModeToggle
-          dark={true}
-          theme={theme}
-          setTheme={setTheme}
-        />
+        <DarkModeToggle theme={theme} setTheme={setTheme} />
       </span>
       <footer className="bg-neutral p-2">
         <a
