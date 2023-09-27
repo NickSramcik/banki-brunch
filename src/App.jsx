@@ -11,6 +11,18 @@ function App() {
   const auth = useAuthContext();
   const isAuthenticated = auth.isAuthenticated();
 
+  useEffect(() => {
+    //get access to the html tag so we can change
+    //the data-theme attribute.
+    const html = document.querySelector("html");
+
+    if (theme === "light") {
+      html.setAttribute("data-theme", "light");
+    } else {
+      html.setAttribute("data-theme", "dark");
+    }
+  }, [theme]);
+
   return (
     <div className="flex flex-col items-center justify-between px-4 mx-auto font-display bg-base-100 h-screen overflow-hidden">
       <Header />
