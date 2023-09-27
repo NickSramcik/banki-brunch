@@ -1,11 +1,16 @@
-import '../App.css'
-function Footer() { 
-  
-return(
-    <div className="bg-neutral justify-between h-10 flex items-center w-screen">  
+import "../App.css";
+import DarkModeToggle from "./DarkModeToggle";
+function Footer({ theme, setTheme }) {
+  return (
+    <div className="bg-neutral justify-between h-10 flex items-center w-screen ">
       <footer className="bg-neutral">
-        </footer>
+        <DarkModeToggle
+          dark={true}
+          theme={theme}
+          setTheme={setTheme}
+        />
+      </footer>
     </div>
-)
+  );
 }
-export default Footer
+export default Footer;
