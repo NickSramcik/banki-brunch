@@ -66,7 +66,7 @@ export default function Question() {
     return (
       <div>
         {isOpen && <AnswerBox />}
-        <button onClick={toggle} className="bg-primary border-[2px] border-full border-accent rounded-full p-4 text-secondary font-bubble tracking-wider text-2xl mt-4">{buttonText}</button>
+        <button onClick={toggle} className="bg-primary border-[2px] border-full border-accent rounded-lg p-4 text-secondary font-bubble tracking-wider text-2xl mt-4">{buttonText}</button>
       </div>
     );
   }
