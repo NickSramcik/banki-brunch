@@ -29,13 +29,13 @@ function App() {
 
       {isAuthenticated ? ( 
         <form onSubmit={() => auth.logout()} className="btn-login">
-          <button type="submit" className="px-4 py-2 text-lg font-light tracking-widest text-white transition duration-300 ease-in-out border-2 rounded-lg bg-primary border-accent hover:bg-base-200 active:bg-base-200 focus:outline-none hover:border-accent active:border-accent">
+          <button type="submit" className="px-4 py-2 text-lg font-light tracking-widest text-white transition duration-300 ease-in-out border-2 rounded-lg bg-neutral border-accent hover:bg-base-200 active:bg-base-200 focus:outline-none hover:border-accent active:border-accent">
             Logout
           </button>
         </form>
       ) : (
         <form action="/auth/discord" className="btn-login">
-          <button type="submit" className="px-4 py-2 text-lg font-light tracking-widest text-white transition duration-300 ease-in-out border-2 rounded-lg bg-primary border-accent hover:bg-base-200 active:bg-base-200 focus:outline-none hover:border-accent active:border-accent">
+          <button type="submit" className="px-4 py-2 text-lg font-light tracking-widest text-white transition duration-300 ease-in-out border-2 rounded-lg bg-neutral border-accent hover:bg-base-200 active:bg-base-200 focus:outline-none hover:border-accent active:border-accent">
             Login
           </button>
         </form>

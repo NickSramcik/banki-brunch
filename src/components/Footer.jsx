@@ -15,7 +15,7 @@ function Footer({ theme, setTheme }) {
         >
           <Github
             className="w-12 h-8 p-1 rounded-full bg-neutral text-neutral-content hover:bg-neutral-focus"
-            fill={theme === "dark" ? "#CC9763" : "#E1EBF6"}
+            fill="#E1EBF6"
           />
         </a>
       </footer>
