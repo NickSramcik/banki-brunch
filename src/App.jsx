@@ -24,7 +24,7 @@ function App() {
   }, [theme]);
 
   return (
-    <div className="flex flex-col items-center justify-between h-screen px-4 mx-auto overflow-hidden font-display bg-base-100"> 
+    <div className="flex flex-col items-center justify-between h-screen mx-auto overflow-hidden font-display bg-base-100">
       <Header /> 
 
       {isAuthenticated ? ( 
