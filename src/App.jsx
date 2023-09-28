@@ -24,24 +24,24 @@ function App() {
   }, [theme]);
 
   return (
-    <div className="flex flex-col items-center justify-between px-4 mx-auto font-display bg-base-100 h-screen overflow-hidden">
-      <Header />
+    <div className="flex flex-col items-center justify-between h-screen px-4 mx-auto overflow-hidden font-display bg-base-100"> 
+      <Header /> 
 
-      {isAuthenticated ? (
+      {isAuthenticated ? ( 
         <form onSubmit={() => auth.logout()} className="btn-login">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="px-4 py-2 text-lg font-light tracking-widest text-white transition duration-300 ease-in-out border-2 rounded-lg bg-primary border-accent hover:bg-base-200 active:bg-base-200 focus:outline-none hover:border-accent active:border-accent">
             Logout
           </button>
         </form>
       ) : (
         <form action="/auth/discord" className="btn-login">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="px-4 py-2 text-lg font-light tracking-widest text-white transition duration-300 ease-in-out border-2 rounded-lg bg-primary border-accent hover:bg-base-200 active:bg-base-200 focus:outline-none hover:border-accent active:border-accent">
             Login
           </button>
         </form>
-      )}
+      )} 
 
-      <main className="flex flex-col gap-4 items-center text-center font-body">
+      <main className="flex flex-col items-center gap-4 text-center font-body">
         <Question />
       </main>
 
