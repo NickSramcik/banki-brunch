@@ -71,7 +71,7 @@ export default function Question() {
         {isOpen && <AnswerBox />}
         <button
           onClick={toggle}
-          className="bg-primary border-[2px] border-full border-accent rounded-lg p-4 text-secondary font-bubble tracking-wider text-2xl mt-4"
+          className="bg-primary border-[2px] border-full border-accent rounded-lg p-4 text-secondary font-bubble tracking-wider text-lg md:text-2xl mt-4"
         >
           {buttonText}
         </button>
@@ -80,53 +80,52 @@ export default function Question() {
   }
   return (
     <>
-      <div className="flex flex-row justify-center gap-8 mb-8 justify-items-center">
-        <svg
-          onClick={handlePrevQuestion}
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="2.5"
-          stroke="currentColor"
-          className="h-20 cursor-pointer w-80" // Set the fixed width and height here
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M15.75 19.5L8.25 12l7.5-7.5"
-          />
-        </svg>
-        <div
-          id="question"
-          className="flex flex-col justify-center w-96"
-        >
-          {/* Use the activeQuestionIndex to access the corresponding index into questions for the current session
+      <div className="flex flex-row justify-center gap-8 mb-8">
+        <div className="flex items-center">
+          <svg
+            onClick={handlePrevQuestion}
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="2.5"
+            stroke="currentColor"
+            className="h-10 w-12 cursor-pointer md:w-80" // Set the fixed width and height here
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 19.5L8.25 12l7.5-7.5"
+            />
+          </svg>
+          <div id="question" className="text-center w-80 md:w-96">
+            {/* Use the activeQuestionIndex to access the corresponding index into questions for the current session
             Then use the parse module to handle any HTML formatting in the question and return the formatted text
         */}
-          <h2 className={`text-[1.5rem] pb-0 text-secondary`}>
-            {
-              parse(
-                questions[sessionIndexes[activeQuestionIndex]]
-                  .question
-              ).text
-            }
-          </h2>
+            <h2 className={`text-[1.5rem] pb-0 text-secondary`}>
+              {
+                parse(
+                  questions[sessionIndexes[activeQuestionIndex]]
+                    .question
+                ).text
+              }
+            </h2>
+          </div>
+          <svg
+            onClick={handleNextQuestion}
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="2.5"
+            stroke="currentColor"
+            className="h-10 w-12 cursor-pointer md:w-80 " // Set the fixed width and height here
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M8.25 4.5l7.5 7.5-7.5 7.5"
+            />
+          </svg>
         </div>
-        <svg
-          onClick={handleNextQuestion}
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="2.5"
-          stroke="currentColor"
-          className="h-20 cursor-pointer w-80" // Set the fixed width and height here
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M8.25 4.5l7.5 7.5-7.5 7.5"
-          />
-        </svg>
       </div>
       <ShowAnswerBtn />
     </>
