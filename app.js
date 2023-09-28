@@ -67,7 +67,6 @@ if (process.env.NODE_ENV === "development") {
 //import mongoose from "mongoose"; // not set up yet
 
 // Import routers
-import homeRoutes from "./routes/homeRoute.js";
 import userRoutes from "./routes/userRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 
@@ -85,12 +84,10 @@ import logger from "./middleware/logger.js";
 //     console.log("Connected to MongoDB");
 //   });
 
-app.set("view engine", "ejs");
 
 app.use(logger); // Log every request
 
 // Using the routers
-app.use("/", homeRoutes);
 app.use("/user", userRoutes);
 app.use("/auth", authRoutes);
 
