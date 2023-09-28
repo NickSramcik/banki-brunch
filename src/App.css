@@ -11,9 +11,20 @@
     text-shadow: 0.1em 0.05em #000
 }
 
-#waffle{
-   transform: translate(50px, -15px)
+#waffle {
+  transform: translate(50px, -15px);
+  position: fixed;
+  transform: translateX(50%);
+  left: -40px;
 }
+
+@screen sm {
+  #waffle {
+    position: static;
+    transform: translate(50px, -15px)
+  }
+}
+
 .action-icon{
     cursor: pointer;
 }
