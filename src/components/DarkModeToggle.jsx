@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Sun from "../assets/svg/darkMode/Sun";
-import Moon from "../assets/svg/darkMode/moon";
+import Moon from "../assets/svg/darkMode/Moon";
 
 /**
  * @param {string} theme The value for the theme, "dark" || "light".
