@@ -53,6 +53,7 @@ export default function Question() {
     setActiveQuestionIndex(prev_index);
   };
 
+  // TODO: visibile on line 59 is unused
   function ShowAnswerBtn() {
     const [isOpen, setIsOpen] = useState(false);
     const [visible, setVisible] = useState(true);
