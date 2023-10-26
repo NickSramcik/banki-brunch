@@ -3,8 +3,26 @@
 @tailwind utilities;
 
 .btn-login {
-    position: fixed;
-    top: 20px;
-    right: 20px;
+    position: absolute;
+    top: 60px;
+    right: 16px;
     z-index: 10;
+}
+
+@screen lg {
+    .btn-login {
+        right: 280px;
+    }
+}
+
+@media all and (min-width:320px) and (max-width:530px) {
+    .btn-login {
+        right: 20px;
+    }
+}
+
+@media all and (min-width:531px) and (max-width:790px) {
+    .btn-login {
+        right: 20px;
+    }
 }
