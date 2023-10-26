@@ -14,7 +14,7 @@ return(
         </h1>
       </header>
       
-      <img id="waffle" className="w-80 brightness-75 lg:brightness-100" src="src/assets/waffle.png"/>
+      <img id="waffle" className="w-80 brightness-75 lg:brightness-100" src="../assets/waffle.png"/>
     </div>
 )
 }
