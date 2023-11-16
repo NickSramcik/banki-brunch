@@ -5,13 +5,14 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --port 8080 --host",
-    "build": "vite build",
-    "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
+    "client:dev": "vite --port 8080 --host",
+    "client:build": "vite build",
+    "client:lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "client:preview": "vite preview",
     "db:up": "docker compose up -d mongo",
     "db:stop": "docker compose stop mongo",
-    "start": "nodemon app.js"
+    "server:dev": "nodemon app.js",
+		"server:prod": "node app.js"
   },
   "dependencies": {
     "body-parser": "^1.20.2",
