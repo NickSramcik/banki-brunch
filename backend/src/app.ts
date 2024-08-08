@@ -8,7 +8,7 @@ import authRouter from "./router/auth"
 const app = express()
 
 app.use(helmet())
-app.use(cors({ origin: "http://localhost:5173", credentials: true }))
+app.use(cors({ origin: process.env.WHITELIST_ORIGIN, credentials: true }))
 app.use(express.json())
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"))
